@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver Fatigue Detection</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .message{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+            margin-bottom: 10px;
+            font-size: 22px;
+            font-weight:600;
+            color: darkblue;
+        }
+
+        #video_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: calc(100vh - 70px); */
+            padding: 50px;
+        }
+
+        #video_feed {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="header">
+        <h1>Driver Fatigue Detection</h1>
+    </div>
+    <!-- <div class="message">
+        <div id="textDiv">TEXT</div>
+    </div> -->
+    
+    <div id="video_container">
+        <img id="video_feed" src="{{ url_for('video_feed') }}">
+    </div>
+
+    <div id="controls">
+        <button class="button" id="start_button" onclick="startVideo()">Start</button>
+        <button class="button" id="stop_button" onclick="stopVideo()" >Stop</button>
+    </div>
+
+    <script>
+        function startVideo() {
+            document.getElementById('video_feed').src = "{{ url_for('video_feed') }}";
+        }
+
+        function stopVideo() {
+            document.getElementById('video_feed').src = "";
+        }
+    </script>
+    
+    <!-- <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: '/get_text',
+                method: 'GET',
+                success: function(response) {
+                    $('#myDiv').text(response.text);
+                }
+            });
+        });
+    </script> -->
+    <!-- <script>
+        var textContainer = document.getElementById('textDiv');
+
+        var eventSource = new EventSource('/stream_text');
+        eventSource.onmessage = function(event) {
+            textContainer.innerText = event.data;
+        };
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,1 @@
+python detect_DS_count_base.py --source Drowsiness/videos/Drowsiness.mp4 --output Drowsiness/output_videos --names Drowsiness/names_Drowsiness.names --cfg Drowsiness/yolor_p6_Drowsiness.cfg --weights Drowsiness/best_Drowsiness.pt --conf 0.5 --img-size 1280 --device 0 --view-img
